@@ -1,0 +1,692 @@
+<!DOCTYPE doctype html>
+<html data-hairline="true" data-theme="light" lang="zh">
+ <head>
+  <meta charset="utf-8"/>
+  <title data-react-helmet="true">
+   【领域报告】小样本学习年度进展|VALSE2018
+  </title>
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport"/>
+  <meta content="webkit" name="renderer"/>
+  <meta content="webkit" name="force-rendering"/>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <meta content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg" name="google-site-verification"/>
+  <meta content="编者按：子曰：“举一隅不以三隅反，则不复也”。人类从少量样本中去思考，还能用这个做什么；而机器则是见到了上亿的数据，却希望下一个与之前的相似。在机器学习领域中，随着更多应用场景的涌现，我们越来越面临…" data-react-helmet="true" property="description"/>
+  <meta content="【领域报告】小样本学习年度进展|VALSE2018" data-react-helmet="true" property="og:title"/>
+  <meta content="http://zhuanlan.zhihu.com/p/38246454" data-react-helmet="true" property="og:url"/>
+  <meta content="编者按：子曰：“举一隅不以三隅反，则不复也”。人类从少量样本中去思考，还能用这个做什么；而机器则是见到了上亿的数据，却希望下一个与之前的相似。在机器学习领域中，随着更多应用场景的涌现，我们越来越面临…" data-react-helmet="true" property="og:description"/>
+  <meta content="" data-react-helmet="true" property="og:image"/>
+  <meta content="article" data-react-helmet="true" property="og:type"/>
+  <meta content="知乎专栏" data-react-helmet="true" property="og:site_name"/>
+  <link href="https://static.zhihu.com/static/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="https://static.zhihu.com/static/search.xml" rel="search" title="知乎" type="application/opensearchdescription+xml"/>
+  <link href="//static.zhimg.com" rel="dns-prefetch"/>
+  <link href="//pic1.zhimg.com" rel="dns-prefetch"/>
+  <link href="//pic2.zhimg.com" rel="dns-prefetch"/>
+  <link href="//pic3.zhimg.com" rel="dns-prefetch"/>
+  <link href="//pic4.zhimg.com" rel="dns-prefetch"/>
+  <link href="https://static.zhihu.com/heifetz/column.app.7714d47abf85da958c98.css" rel="stylesheet"/>
+ </head>
+ <body class="">
+  <p hidden="">
+   有问题，上知乎。知乎作为中文互联网最大的知识分享平台，以「知识连接一切」为愿景，致力于构建一个人人都可以便捷接入的知识分享网络，让人们便捷地与世界分享知识、经验和见解，发现更大的世界。
+  </p>
+  <div id="root">
+   <div class="App" data-reactroot="">
+    <div class="LoadingBar">
+    </div>
+    <main class="App-main" role="main">
+     <div class="Post-content" data-zop='{"authorName":"程程","itemId":38246454,"title":"【领域报告】小样本学习年度进展|VALSE2018","type":"article"}' data-zop-usertoken='{"userToken":"qing-feng-84-70"}'>
+      <div class="ColumnPageHeader-Wrapper">
+       <div>
+        <div class="Sticky ColumnPageHeader">
+         <div class="ColumnPageHeader-content">
+          <a aria-label="知乎" href="//www.zhihu.com">
+           <svg aria-hidden="true" class="Icon ZhihuLogo Icon--logo" height="30" style="height:30px;width:64px" viewbox="0 0 200 91" width="64">
+            <title>
+            </title>
+            <g>
+             <path d="M53.29 80.035l7.32.002 2.41 8.24 13.128-8.24h15.477v-67.98H53.29v67.978zm7.79-60.598h22.756v53.22h-8.73l-8.718 5.473-1.587-5.46-3.72-.012v-53.22zM46.818 43.162h-16.35c.545-8.467.687-16.12.687-22.955h15.987s.615-7.05-2.68-6.97H16.807c1.09-4.1 2.46-8.332 4.1-12.708 0 0-7.523 0-10.085 6.74-1.06 2.78-4.128 13.48-9.592 24.41 1.84-.2 7.927-.37 11.512-6.94.66-1.84.785-2.08 1.605-4.54h9.02c0 3.28-.374 20.9-.526 22.95H6.51c-3.67 0-4.863 7.38-4.863 7.38H22.14C20.765 66.11 13.385 79.24 0 89.62c6.403 1.828 12.784-.29 15.937-3.094 0 0 7.182-6.53 11.12-21.64L43.92 85.18s2.473-8.402-.388-12.496c-2.37-2.788-8.768-10.33-11.496-13.064l-4.57 3.627c1.363-4.368 2.183-8.61 2.46-12.71H49.19s-.027-7.38-2.372-7.38zm128.752-.502c6.51-8.013 14.054-18.302 14.054-18.302s-5.827-4.625-8.556-1.27c-1.874 2.548-11.51 15.063-11.51 15.063l6.012 4.51zm-46.903-18.462c-2.814-2.577-8.096.667-8.096.667s12.35 17.2 12.85 17.953l6.08-4.29s-8.02-11.752-10.83-14.33zM199.99 46.5c-6.18 0-40.908.292-40.953.292v-31.56c1.503 0 3.882-.124 7.14-.376 12.773-.753 21.914-1.25 27.427-1.504 0 0 3.817-8.496-.185-10.45-.96-.37-7.24 1.43-7.24 1.43s-51.63 5.153-72.61 5.64c.5 2.756 2.38 5.336 4.93 6.11 4.16 1.087 7.09.53 15.36.277 7.76-.5 13.65-.76 17.66-.76v31.19h-41.71s.88 6.97 7.97 7.14h33.73v22.16c0 4.364-3.498 6.87-7.65 6.6-4.4.034-8.15-.36-13.027-.566.623 1.24 1.977 4.496 6.035 6.824 3.087 1.502 5.054 2.053 8.13 2.053 9.237 0 14.27-5.4 14.027-14.16V53.93h38.235c3.026 0 2.72-7.432 2.72-7.432z" fill-rule="evenodd">
+             </path>
+            </g>
+           </svg>
+          </a>
+          <i class="ColumnPageHeader-Line">
+          </i>
+          <div class="ColumnPageHeader-Title">
+           <a class="ColumnLink ColumnPageHeader-Link" href="//zhuanlan.zhihu.com/dlclass">
+            <img alt="深度学习大讲堂" class="Avatar Avatar--round" height="30" src="https://pic3.zhimg.com/d465dd7f33dc53988278b39b91b59634_is.jpg" srcset="https://pic3.zhimg.com/d465dd7f33dc53988278b39b91b59634_im.jpg 2x" width="30"/>
+           </a>
+           <div class="ColumnPageHeader-TitleName">
+            <span class="ColumnPageHeader-TitleMeta">
+             首发于
+            </span>
+            <a class="ColumnLink ColumnPageHeader-TitleColumn" href="//zhuanlan.zhihu.com/dlclass">
+             深度学习大讲堂
+            </a>
+           </div>
+          </div>
+          <div class="ColumnPageHeader-Button">
+           <button class="Button ColumnPageHeader-WriteButton Button--blue" type="button">
+            <svg class="Zi Zi--EditSurround" fill="currentColor" height="24" viewbox="0 0 24 24" width="24">
+             <path d="M18.453 7.992l-1.833-1.65.964-.978a1.223 1.223 0 0 1 1.73-.012l.005.006a1.24 1.24 0 0 1 .007 1.748l-.873.886zm-1.178 1.194l-5.578 5.66-1.935.697a.393.393 0 0 1-.504-.504l.697-1.935 5.488-5.567 1.832 1.65zM7.58 5.848l5.654.006-1.539 1.991-3.666.012A1.02 1.02 0 0 0 7 8.868v7.993c0 .558.46 1.01 1.029 1.01l7.941-.01c.568 0 1.03-.453 1.03-1.012v-4.061l2-1.442v6.002c0 1.397-1.2 2.501-2.62 2.501H7.574C6.153 19.85 5 18.717 5 17.32V8.35c0-1.397 1.16-2.502 2.58-2.502z">
+             </path>
+            </svg>
+            写文章
+           </button>
+           <div class="Popover">
+            <button aria-expanded="false" aria-haspopup="true" aria-owns="null-content" class="Button ColumnPageHeader-MenuToggler Button--plain" id="null-toggle" title="更多" type="button">
+             <svg class="Zi Zi--Dots" fill="currentColor" height="24" viewbox="0 0 24 24" width="24">
+              <path d="M5 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill-rule="evenodd">
+              </path>
+             </svg>
+            </button>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <article class="Post-Main Post-NormalMain">
+       <header class="Post-Header">
+        <h1 class="Post-Title">
+         【领域报告】小样本学习年度进展|VALSE2018
+        </h1>
+        <div class="Post-Author">
+         <div class="AuthorInfo" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta content="程程" itemprop="name"/>
+          <meta content="https://pic4.zhimg.com/f500f834bcb69dbd2c040be1ec45fc23_is.jpg" itemprop="image"/>
+          <meta content="https://www.zhihu.com/people/cheng-cheng-65-1-30" itemprop="url"/>
+          <meta itemprop="zhihu:followerCount"/>
+          <span class="UserLink AuthorInfo-avatarWrapper">
+           <div class="Popover">
+            <div aria-expanded="false" aria-haspopup="true" aria-owns="null-content" id="null-toggle">
+             <a class="UserLink-link" data-za-detail-view-element_name="User" href="//www.zhihu.com/people/cheng-cheng-65-1-30" target="_blank">
+              <img alt="程程" class="Avatar Avatar--round AuthorInfo-avatar" height="38" src="https://pic4.zhimg.com/f500f834bcb69dbd2c040be1ec45fc23_xs.jpg" srcset="https://pic4.zhimg.com/f500f834bcb69dbd2c040be1ec45fc23_l.jpg 2x" width="38"/>
+             </a>
+            </div>
+           </div>
+          </span>
+          <div class="AuthorInfo-content">
+           <div class="AuthorInfo-head">
+            <span class="UserLink AuthorInfo-name">
+             <div class="Popover">
+              <div aria-expanded="false" aria-haspopup="true" aria-owns="null-content" id="null-toggle">
+               <a class="UserLink-link" data-za-detail-view-element_name="User" href="//www.zhihu.com/people/cheng-cheng-65-1-30" target="_blank">
+                程程
+               </a>
+              </div>
+             </div>
+            </span>
+           </div>
+           <div class="AuthorInfo-detail">
+            <div class="AuthorInfo-badge">
+             <div class="RichText ztext AuthorInfo-badgeText">
+              来自莫屯的小胖纸.
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <button class="Button FollowButton Button--primary Button--blue" type="button">
+          <span style="display:inline-flex;align-items:center">
+           ​
+           <svg class="Zi Zi--Plus FollowButton-icon" fill="currentColor" height="1.2em" viewbox="0 0 24 24" width="1.2em">
+            <path d="M13.491 10.488s-.012-5.387 0-5.998c-.037-1.987-3.035-1.987-2.997 0-.038 1.912 0 5.998 0 5.998H4.499c-1.999.01-1.999 3.009 0 3.009s5.995-.01 5.995-.01v5.999c0 2.019 3.006 2.019 2.997 0-.01-2.019 0-5.998 0-5.998s3.996.009 6.004.009c2.008 0 2.008-3-.01-3.009h-5.994z" fill-rule="evenodd">
+            </path>
+           </svg>
+          </span>
+          关注她
+         </button>
+        </div>
+        <div>
+         <span class="Voters">
+          <button class="Button Button--plain" type="button">
+           41 人
+           <!-- -->
+           赞了该文章
+          </button>
+         </span>
+        </div>
+       </header>
+       <div>
+        <div class="RichText ztext Post-RichText">
+         <p>
+          <b>
+           编者按：
+          </b>
+          子曰：“举一隅不以三隅反，则不复也”。
+         </p>
+         <p>
+          人类从少量样本中去思考，还能用这个做什么；而机器则是见到了上亿的数据，却希望下一个与之前的相似。
+         </p>
+         <p>
+          在机器学习领域中，随着更多应用场景的涌现，我们越来越面临着样本数量不足的问题。因此，如何通过举一反三的方式进行小样本学习，成为了一个重要的研究方向。
+         </p>
+         <p>
+          本文中，复旦大学的付彦伟教授，将介绍过去一年中小样本学习领域的研究进展。
+         </p>
+         <p>
+          文末，大讲堂提供文中提到参考文献的下载链接。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_b.jpg" data-caption="" data-original="https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_b.jpg" width="640"/>
+         </figure>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_b.jpg" data-caption="" data-original="https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_b.jpg" width="640"/>
+         </figure>
+         <p>
+          本次报告主要回顾one-shot learning，也可以称为few-shot learning或low-shot learning领域最近的进展。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_b.jpg" data-caption="" data-original="https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_b.jpg" width="640"/>
+         </figure>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_b.jpg" data-caption="" data-original="https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_b.jpg" width="640"/>
+         </figure>
+         <p>
+          首先，one-shot learning产生的动机大家都比较了解。现在在互联网，我们主要用large-scale方法处理数据，但真实情况下，大部分类别我们没有数据积累，large-scale方法不完全适用。所以我们希望在学习了一定类别的大量数据后，对于新的类别，我们只需要少量的样本就能快速学习。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_b.jpg" data-caption="" data-original="https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_b.jpg" width="640"/>
+         </figure>
+         <p>
+          存在的问题一方面是知识缺失，另一方面是需要大量的训练样本。第一点在本文中不做讨论。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_b.jpg" data-caption="" data-original="https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_b.jpg" width="640"/>
+         </figure>
+         <p>
+          对于第二点，目前考虑的解决方法主要有两个：
+         </p>
+         <p>
+          第一个是人能够识别一个从没有见过的物体，也就是zero-shot learning；
+         </p>
+         <p>
+          第二个是从已有任务中学习知识，将其应用到未来模型训练中，可以认为是一个迁移学习的问题。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_b.jpg" data-caption="" data-original="https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_b.jpg" width="640"/>
+         </figure>
+         <p>
+          那么我们如何定义one-shot learning呢？ 它的目的是从一个或几个图像样本中学习类别信息。但我们这里的one-shot learning并不限于一般图像，也可以在文本，医疗图像等特殊图像，或者物理化学中的扫描图像上进行应用。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_b.jpg" data-caption="" data-original="https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_b.jpg" width="640"/>
+         </figure>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_b.jpg" data-caption="" data-original="https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_b.jpg" width="640"/>
+         </figure>
+         <p>
+          One-shot learning的研究主要分为如下几类：
+         </p>
+         <p>
+          第一类方法是直接基于有监督学习的方法，这是指没有其他的数据源，不将其作为一个迁移学习的问题看待，只利用这些小样本，在现有信息上训练模型，然后做分类；
+         </p>
+         <p>
+          第二个是基于迁移学习的方法，是指有其他数据源时，利用这些辅助数据集去做迁移学习。这是我今年一篇综述里提到的模型分类。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_b.jpg" data-caption="" data-original="https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_b.jpg" width="640"/>
+         </figure>
+         <p>
+          对于第一类直接进行有监督学习的方法，可以做基于实例的学习，比如KNN，以及非参数方法。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_b.jpg" data-caption="" data-original="https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_b.jpg" width="640"/>
+         </figure>
+         <p>
+          而基于迁移学习的one-shot learning，首先是基于属性的学习，比如我们最早在做zero-shot learning的时候，会顺便做one-shot learning，把特征投影到一个属性空间，然后在这个属性空间中既可以做one-shot learning，又可以做zero-shot learning，但是每个类别都需要属性标注，也就是需要额外的信息。最近的机器学习领域里，所讨论one-shot learning一般不假设我们知道这些额外信息，大体上可以被分为meta-learning，或者metric-learning。 Meta-learning从数据中学习一种泛化的表示，这种泛化的表示可以被直接用于目标数据上，小样本的类别学习过程。Metric-learning从数据源中构建一个空间。但是本质上meta-learning和metric-learning还是有很多相似的地方。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_b.jpg" data-caption="" data-original="https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_b.jpg" width="640"/>
+         </figure>
+         <p>
+          接下来是数据增强，这其实是很重要也很容易被忽视的一点，可以有很多方法来实现：
+         </p>
+         <p>
+          第一，利用流信息学习one-shot模型，常见的有半监督学习和transductive learning，探讨的是如何用无标签数据去做one-shot learning。
+         </p>
+         <p>
+          第二，在有预训练模型时，用这些预训练模型进行数据增强。
+         </p>
+         <p>
+          第三，从相近的类别借用数据，来增强训练数据集。
+         </p>
+         <p>
+          第四，合成新的有标签训练数据，用一些遥感里的方法，可以合成一些图像，或者3d物体。
+         </p>
+         <p>
+          第五，用GAN来学习合成模型，比如最近用GAN来做personal ID和人脸相关研究。
+         </p>
+         <p>
+          第六，属性引导的增强方法。具体大家可以在文章里进行详细了解。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_b.jpg" data-caption="" data-original="https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_b.jpg" width="640"/>
+         </figure>
+         <p>
+          首先基于迁移学习的方法，我们目前的实验结果显示：大部分已经发表的one-shot learning方法在miniImageNet数据集上的结果，比不过resnet-18的结果，这也是很微妙的一点。我们的代码已经放到github上，大家有兴趣可以看一下。（如果我们的实验在什么地方有问题，欢迎大家给我发邮件）
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_b.jpg" data-caption="" data-original="https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_b.jpg" width="640"/>
+         </figure>
+         <p>
+          下面简单介绍相关文章。首先是Wang Yuxiong的文章Learning to Learn: Model Regression Networks for Easy Small Sample Learning，他们用原数据构建了很多模型库，然后目标数据直接回归这些模型库。具体就是在source class上训练一个regression network。对于大量样本我们可以得到一个比较好的分类器。对于少量样本我们可以得到一个没那么好的分类器。这个regression network的目的就是把没那么好的分类器映射成比较好的分类器。即，把一个分类器的权重映射到另一个分类器。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_b.jpg" data-caption="" data-original="https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_b.jpg" width="640"/>
+         </figure>
+         <p>
+          第二个是Matching Networks for One Shot Learning，这个文章很有意思，从标题中就能读出大概做了什么工作。对于一张图片，我们训练一个matching network来提取它的feature。然后用一个简单的数学公式来判断feature之间的距离。对于新的图片，根据它与已知图片的距离来进行分类。这篇文章精巧地设计了训练的过程，来使得这个过程与测试时的过程一致。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_b.jpg" data-caption="" data-original="https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_b.jpg" width="640"/>
+         </figure>
+         <p>
+          第三是MAML，是与模型无关的meta-learning的方法，它主要侧重于深度网络的快速适应。这篇文章的思想就是找到一个网络最好的初始位置，这个初始位置被定义为：经过几个小样本的调整后可以得到最好的表现。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_b.jpg" data-caption="" data-original="https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_b.jpg" width="640"/>
+         </figure>
+         <p>
+          第四个是Optimization as a model for few-shot learning，也是meta-learning的方法，将任务组织成一个最优化的问题。这篇文章将梯度下降的过程与LSTM的更新相对比，发现它们非常相似。所以可以用LSTM来学习梯度下降的过程，以此使用LSTM来做梯度下降的工作。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_b.jpg" data-caption="" data-original="https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_b.jpg" width="640"/>
+         </figure>
+         <p>
+          第五个是meta networks，也是meta-learning方法。其中利用了少量样本在基础网络中产生的梯度，来快速生成新的参数权重。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_b.jpg" data-caption="" data-original="https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_b.jpg" width="640"/>
+         </figure>
+         <p>
+          今年NIPS一篇prototypical network，主要是在matching networks的基础上做了一些更改。它们给每一个类一个原型，样本与类的距离就是样本与原型的距离。然后选用欧氏距离替代了matching network的余弦距离。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_b.jpg" data-caption="" data-original="https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_b.jpg" width="640"/>
+         </figure>
+         <p>
+          今年CVPR的Learning to compare: Relation network for few-shot learning。简单来说就是用embedding module来提取feature。然后用relation module来输出两个feature之间的距离。一次来通过距离进行分类选择。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_b.jpg" data-caption="" data-original="https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_b.jpg" width="640"/>
+         </figure>
+         <p>
+          关于on-shot learning，还有其他参考文献，可在文末的链接中下载。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_b.jpg" data-caption="" data-original="https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_b.jpg" width="640"/>
+         </figure>
+         <p>
+          下面简单介绍一下数据增强的相关文章。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_b.jpg" data-caption="" data-original="https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_b.jpg" width="640"/>
+         </figure>
+         <p>
+          上图是我们今年的提交到ECCV的一个工作，用左边的encoder-trinet把视觉特征映射到语义空间。因为语义空间上有更丰富的信息，可以在语义空间上做数据扩充（添加高斯噪声和寻找最近邻），再映射回视觉空间来得到更多的扩充样例。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_b.jpg" data-caption="" data-original="https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_b.jpg" width="640"/>
+         </figure>
+         <p>
+          ICCV2017这篇文章根据已有的图像去生成新的图像，然后做low-shot 视觉识别。具体来说，比如说你有三张图片：一张是鸟，一张是鸟站在树枝上，一张是猴子。那么你可以学习一个网络让它生成猴子站在树枝上的图片。本质上是，想把一个类的变化迁移到另一个类上，以此来做数据扩充。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_b.jpg" data-caption="" data-original="https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_b.jpg" width="640"/>
+         </figure>
+         <p>
+          这是去年在CVPR上发表的文章AGA，主要针对3D数据，把图像投影到一个属性空间做数据增强。这是一个few-shot learning方法。具体就是，给定几张距离观测者不同距离的桌子的照片，以及一张凳子的照片，让机器学会如何去生成不同距离的凳子的照片，以此来做数据扩充。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_b.jpg" data-caption="" data-original="https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_b.jpg" width="640"/>
+         </figure>
+         <p>
+          最后在 one-shot learning之上，我们还可能遇到一个问题，one-shot learning只关注目标类别上的分类问题，我们希望学习到的模型对源数据类别也适用，否则将带来一个问题，被称为灾难性遗忘。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_b.jpg" data-caption="" data-original="https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_b.jpg" width="640"/>
+         </figure>
+         <p>
+          发表在PNAS的文章提出EWC 模型来解决这个问题。灾难性遗忘往往源于我们学习任务B的时候更新网络，使得任务A做的没那么好了。EWC提供了一种方法来计算权重对于任务A的重要性，把重要性引入到损失函数中，来避免更改会影响A效果的权重。
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_b.jpg" width="640"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_b.jpg" data-caption="" data-original="https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_r.jpg" data-rawheight="360" data-rawwidth="640" data-size="normal" src="https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_b.jpg" width="640"/>
+         </figure>
+         <p>
+          还有learning without forgetting这篇文章，也是侧重于解决这个问题。简单来说就是拿到一个新任务后，我们会更新网络。我们希望在更新网络前后网络没有太大变化，所以我们添加一个loss来限制网络更新前后对于这个新的任务输出的特征不能有太大变化，也就是一个distill loss。
+         </p>
+         <p>
+          最后，小样本学习还有很多可以研究的东西。目前的成果主要还是基于把已知类别的一些信息迁移到新的类别上。可能未来可以尝试下更多的方向，比如利用无监督的信息或者是半监督的方法。
+          <br/>
+         </p>
+         <p>
+          <b>
+           参考文献链接：
+          </b>
+         </p>
+         <p>
+          <a class=" external" href="https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1yzoSeuaZvMjKMQlMfD1Yzw" rel="nofollow noreferrer" target="_blank">
+           <span class="invisible">
+            https://
+           </span>
+           <span class="visible">
+            pan.baidu.com/s/1yzoSeu
+           </span>
+           <span class="invisible">
+            aZvMjKMQlMfD1Yzw
+           </span>
+           <span class="ellipsis">
+           </span>
+          </a>
+         </p>
+         <p>
+          密码: xmap
+         </p>
+         <p>
+          <br/>
+         </p>
+         <p>
+          <b>
+           主编：
+          </b>
+          袁基睿
+          <b>
+           编辑：
+          </b>
+          程一
+         </p>
+         <p>
+          <b>
+           整理：
+          </b>
+          陈梓天、曲英男、杨茹茵、高科、高黎明
+         </p>
+         <p>
+          --end--
+         </p>
+         <p>
+          <br/>
+         </p>
+         <p>
+          <b>
+           作者简介：
+          </b>
+         </p>
+         <figure>
+          <noscript>
+           <img class="origin_image zh-lightbox-thumb" data-caption="" data-original="https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_r.jpg" data-rawheight="706" data-rawwidth="706" data-size="normal" src="https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_b.jpg" width="706"/>
+          </noscript>
+          <img class="origin_image zh-lightbox-thumb lazy" data-actualsrc="https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_b.jpg" data-caption="" data-original="https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_r.jpg" data-rawheight="706" data-rawwidth="706" data-size="normal" src="https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_b.jpg" width="706"/>
+         </figure>
+         <p>
+          <b>
+           付彦伟，
+          </b>
+          复旦大学青年副研究员（tenure-track)，2014年获得伦敦大学玛丽皇后学院博士学位，导师: Prof. Tao Xiang and Prof. Shaogang Gong. 2014年12月至2016年7月，在美国Disney Research做博士后研究。入选2017年度上海高校特聘教授 (东方学者) ， 2018年获国家青年千人计划资助。 主要研究领域包括零样本、小样本识别、终生学习算法，人脸识别及行人再识别，及视频情感分析等。有IEEE TPAMI, CVPR等顶级期刊会议论文20篇，15项中国、2项美国专利等。论文被美国多家科技媒体报道，如Science 2.0, PhyORG, Science Newsline Technology, Science 2.0, Communications of ACM, Business Standard, Science Newsline Technology, PhyORG, EurekAlert! AAAS等。
+         </p>
+         <p>
+          <br/>
+         </p>
+         <p>
+          <b>
+           该文章属于“深度学习大讲堂”原创，如需要转载，请联系
+          </b>
+          <a class="internal" href="https://www.zhihu.com/people/ruyin_y/activities">
+           茹茵
+          </a>
+         </p>
+         <p>
+          <b>
+           原文链接：
+          </b>
+          <a class=" wrap external" href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzI1NTE4NTUwOQ%3D%3D%26tempkey%3DOTYxX2dyUUJVQ3N1VmRUZDk2K0lvT09KaFo1X0s4XzFjUDNpQ1BQaGdfRFpSSnRxelkwX2pKdF8yQXF6LTZOQzlPdThWaEpJUzJUZ3otOF9ubXVUR2NyXy04cEY0UW90eUpWcEx6cGhSaHNlYnBULXVNVEd3bm1qdkpwQ2p3bEV5bkJTUjk0VUxObk5uc04zOWFnWlNBb2tEVldBN0xOTnp6YW9iTE9rS2d%252Bfg%253D%253D%26chksm%3D7235bdcc454234da0816cf8dc46f831fb3d6a69300f0ad250f5210e697e941fbbc7f8d2031bd%23rd" rel="nofollow noreferrer" target="_blank">
+           【领域报告】小样本学习年度进展|VALSE2018
+          </a>
+         </p>
+         <p>
+          <b>
+           欢迎大家关注我们的微信公众号，搜索微信名称：深度学习大讲堂
+          </b>
+         </p>
+         <figure>
+          <noscript>
+           <img class="content_image" data-caption="" data-rawheight="67" data-rawwidth="346" data-size="normal" src="https://pic4.zhimg.com/v2-5b4f23fa0a7d3338e85c35157311f196_b.jpg" width="346"/>
+          </noscript>
+          <img class="content_image lazy" data-actualsrc="https://pic4.zhimg.com/v2-5b4f23fa0a7d3338e85c35157311f196_b.jpg" data-caption="" data-rawheight="67" data-rawwidth="346" data-size="normal" src="https://pic4.zhimg.com/v2-5b4f23fa0a7d3338e85c35157311f196_b.jpg" width="346"/>
+         </figure>
+         <p>
+         </p>
+        </div>
+       </div>
+       <div class="ContentItem-time">
+        <a href="http://zhuanlan.zhihu.com/p/38246454" target="_blank">
+         <span data-tooltip="发布于 2018-06-19 17:24">
+          编辑于 2018-06-19
+         </span>
+        </a>
+       </div>
+       <div class="Post-topicsAndReviewer">
+        <div class="TopicList Post-Topics">
+         <div class="Tag Topic">
+          <span class="Tag-content">
+           <a class="TopicLink" href="//www.zhihu.com/topic/19813032" target="_blank">
+            <div class="Popover">
+             <div aria-expanded="false" aria-haspopup="true" aria-owns="null-content" id="null-toggle">
+              深度学习（Deep Learning）
+             </div>
+            </div>
+           </a>
+          </span>
+         </div>
+        </div>
+       </div>
+       <div>
+        <div class="Sticky RichContent-actions is-bottom">
+         <div class="ContentItem-actions">
+          <button class="Button LikeButton ContentItem-action" type="button">
+           <svg aria-hidden="true" class="Icon Icon--like" height="16" style="height:16px;width:13px" viewbox="0 0 20 18" width="13" xmlns="http://www.w3.org/2000/svg">
+            <title>
+            </title>
+            <g>
+             <path d="M.718 7.024c-.718 0-.718.63-.718.63l.996 9.693c0 .703.718.65.718.65h1.45c.916 0 .847-.65.847-.65V7.793c-.09-.88-.853-.79-.846-.79l-2.446.02zm11.727-.05S13.2 5.396 13.6 2.89C13.765.03 11.55-.6 10.565.53c-1.014 1.232 0 2.056-4.45 5.83C5.336 6.965 5 8.01 5 8.997v6.998c-.016 1.104.49 2 1.99 2h7.586c2.097 0 2.86-1.416 2.86-1.416s2.178-5.402 2.346-5.91c1.047-3.516-1.95-3.704-1.95-3.704l-5.387.007z">
+             </path>
+            </g>
+           </svg>
+           41
+          </button>
+          <button class="Button ContentItem-action Button--plain Button--withIcon Button--withLabel" type="button">
+           <span style="display:inline-flex;align-items:center">
+            ​
+            <svg class="Zi Zi--Comment Button-zi" fill="currentColor" height="1.2em" viewbox="0 0 24 24" width="1.2em">
+             <path d="M10.241 19.313a.97.97 0 0 0-.77.2 7.908 7.908 0 0 1-3.772 1.482.409.409 0 0 1-.38-.637 5.825 5.825 0 0 0 1.11-2.237.605.605 0 0 0-.227-.59A7.935 7.935 0 0 1 3 11.25C3 6.7 7.03 3 12 3s9 3.7 9 8.25-4.373 9.108-10.759 8.063z" fill-rule="evenodd">
+             </path>
+            </svg>
+           </span>
+           1 条评论
+          </button>
+          <div class="Popover ShareMenu ContentItem-action">
+           <div aria-expanded="false" aria-haspopup="true" aria-owns="null-content" class="" id="null-toggle">
+            <button class="Button Button--plain Button--withIcon Button--withLabel" type="button">
+             <span style="display:inline-flex;align-items:center">
+              ​
+              <svg class="Zi Zi--Share Button-zi" fill="currentColor" height="1.2em" viewbox="0 0 24 24" width="1.2em">
+               <path d="M2.931 7.89c-1.067.24-1.275 1.669-.318 2.207l5.277 2.908 8.168-4.776c.25-.127.477.198.273.39L9.05 14.66l.927 5.953c.18 1.084 1.593 1.376 2.182.456l9.644-15.242c.584-.892-.212-2.029-1.234-1.796L2.93 7.89z" fill-rule="evenodd">
+               </path>
+              </svg>
+             </span>
+             分享
+            </button>
+           </div>
+          </div>
+          <button class="Button ContentItem-action Button--plain Button--withIcon Button--withLabel" type="button">
+           <span style="display:inline-flex;align-items:center">
+            ​
+            <svg class="Zi Zi--Star Button-zi" fill="currentColor" height="1.2em" viewbox="0 0 24 24" width="1.2em">
+             <path d="M5.515 19.64l.918-5.355-3.89-3.792c-.926-.902-.639-1.784.64-1.97L8.56 7.74l2.404-4.871c.572-1.16 1.5-1.16 2.072 0L15.44 7.74l5.377.782c1.28.186 1.566 1.068.64 1.97l-3.89 3.793.918 5.354c.219 1.274-.532 1.82-1.676 1.218L12 18.33l-4.808 2.528c-1.145.602-1.896.056-1.677-1.218z" fill-rule="evenodd">
+             </path>
+            </svg>
+           </span>
+           收藏
+          </button>
+          <div class="Post-ActionMenuButton">
+           <div class="Popover">
+            <div aria-expanded="false" aria-haspopup="true" aria-owns="null-content" id="null-toggle">
+             <button class="Button Button--plain Button--withIcon Button--iconOnly" type="button">
+              <span style="display:inline-flex;align-items:center">
+               ​
+               <svg class="Zi Zi--Dots Button-zi" fill="currentColor" height="1.2em" viewbox="0 0 24 24" width="1.2em">
+                <path d="M5 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill-rule="evenodd">
+                </path>
+               </svg>
+              </span>
+             </button>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="PostIndex-Contributes">
+        <h3 class="BlockTitle">
+         文章被以下专栏收录
+        </h3>
+        <ul>
+         <div class="ContentItem Column-ColumnItem">
+          <div class="ContentItem-main">
+           <div class="ContentItem-image">
+            <a class="ColumnLink" href="//zhuanlan.zhihu.com/dlclass">
+             <div class="Popover">
+              <div aria-expanded="false" aria-haspopup="true" aria-owns="null-content" id="null-toggle">
+               <img alt="深度学习大讲堂" class="Avatar Avatar--medium Avatar--round" height="40" src="https://pic3.zhimg.com/d465dd7f33dc53988278b39b91b59634_xs.jpg" srcset="https://pic3.zhimg.com/d465dd7f33dc53988278b39b91b59634_l.jpg 2x" width="40"/>
+              </div>
+             </div>
+            </a>
+           </div>
+           <div class="ContentItem-head">
+            <h2 class="ContentItem-title">
+             <a class="ColumnLink ColumnItem-Title" href="//zhuanlan.zhihu.com/dlclass">
+              <div class="Popover">
+               <div aria-expanded="false" aria-haspopup="true" aria-owns="null-content" id="null-toggle">
+                深度学习大讲堂
+               </div>
+              </div>
+             </a>
+            </h2>
+            <div class="ContentItem-meta">
+             推送深度学习的最新消息，包括最新技术进展，使用以及活动，由中科视拓（SeetaTech）运营。
+
+中科视拓目前正在招聘： 人脸识别算法研究员，深度学习算法工程师，GPU研发工程师， C++研发工程师，Python研发工程师，嵌入式视觉研发工程师，PR经理，商务经理。（PS：深度学习算法工程师岗位、Python研发工程师岗位、嵌入式视觉开发工程师岗位和运营岗位同时接收实习生投递）有兴趣可以发邮件至：hr@seetatech.com，想了解更多可以访问，www.seetatech.com
+            </div>
+           </div>
+           <div class="ContentItem-extra">
+            <button class="Button FollowButton Button--primary Button--blue" type="button">
+             关注专栏
+            </button>
+           </div>
+          </div>
+         </div>
+        </ul>
+       </div>
+      </article>
+     </div>
+    </main>
+   </div>
+  </div>
+  <div data-config='{"apiAddress":"https://www.zhihu.com/api/v4/","deployEnv":"production"}' data-state="{&quot;privacy&quot;:{&quot;showPrivacy&quot;:false},&quot;loading&quot;:{&quot;global&quot;:{&quot;count&quot;:0},&quot;local&quot;:{&quot;currentUser/get/&quot;:false,&quot;env/getExperiments/&quot;:false,&quot;env/getIpinfo/&quot;:false,&quot;article/get/&quot;:false}},&quot;entities&quot;:{&quot;users&quot;:{&quot;qing-feng-84-70&quot;:{&quot;avatarUrlTemplate&quot;:&quot;https://pic4.zhimg.com/da8e974dc_{size}.jpg&quot;,&quot;uid&quot;:801240748224835600,&quot;avatarUrl&quot;:&quot;https://pic4.zhimg.com/da8e974dc_is.jpg&quot;,&quot;followNotificationsCount&quot;:0,&quot;isActive&quot;:1483810680,&quot;userType&quot;:&quot;people&quot;,&quot;editorInfo&quot;:[],&quot;isBindPhone&quot;:true,&quot;accountStatus&quot;:[],&quot;defaultNotificationsCount&quot;:6,&quot;isForceRenamed&quot;:false,&quot;urlToken&quot;:&quot;qing-feng-84-70&quot;,&quot;id&quot;:&quot;ccb28fe49cde9358842e4aa8570c9c71&quot;,&quot;messagesCount&quot;:0,&quot;name&quot;:&quot;清风&quot;,&quot;headline&quot;:&quot;工程师&quot;,&quot;badge&quot;:[],&quot;availableMessageTypes&quot;:[&quot;common&quot;],&quot;isAdvertiser&quot;:false,&quot;renamedFullname&quot;:&quot;&quot;,&quot;isOrg&quot;:false,&quot;gender&quot;:-1,&quot;url&quot;:&quot;http://www.zhihu.com/api/v4/people/ccb28fe49cde9358842e4aa8570c9c71&quot;,&quot;type&quot;:&quot;people&quot;,&quot;voteThankNotificationsCount&quot;:0},&quot;cheng-cheng-65-1-30&quot;:{&quot;avatarUrlTemplate&quot;:&quot;https://pic4.zhimg.com/f500f834bcb69dbd2c040be1ec45fc23_{size}.jpg&quot;,&quot;type&quot;:&quot;people&quot;,&quot;name&quot;:&quot;程程&quot;,&quot;url&quot;:&quot;http://www.zhihu.com/api/v4/people/e88b0df4a852df460635007121f2bfe3&quot;,&quot;gender&quot;:0,&quot;userType&quot;:&quot;people&quot;,&quot;urlToken&quot;:&quot;cheng-cheng-65-1-30&quot;,&quot;isAdvertiser&quot;:false,&quot;avatarUrl&quot;:&quot;https://pic4.zhimg.com/f500f834bcb69dbd2c040be1ec45fc23_is.jpg&quot;,&quot;isFollowing&quot;:false,&quot;isOrg&quot;:false,&quot;headline&quot;:&quot;来自莫屯的小胖纸.&quot;,&quot;badge&quot;:[],&quot;id&quot;:&quot;e88b0df4a852df460635007121f2bfe3&quot;}},&quot;questions&quot;:{},&quot;answers&quot;:{},&quot;articles&quot;:{&quot;38246454&quot;:{&quot;imageUrl&quot;:&quot;&quot;,&quot;updated&quot;:1529400269,&quot;reviewers&quot;:[],&quot;topics&quot;:[{&quot;url&quot;:&quot;http://www.zhihu.com/api/v4/topics/19813032&quot;,&quot;avatarUrl&quot;:&quot;https://pic2.zhimg.com/5d3c206139ca2124997418db09b0bb11_is.jpg&quot;,&quot;name&quot;:&quot;深度学习（Deep Learning）&quot;,&quot;introduction&quot;:&quot;深度学习的概念源于人工神经网络的研究。含多隐层的多层感知器就是一种深度学习结构。深度学习通过组合低层特征形成更加抽象的高层表示属性类别或特征，以发现数据的分布式特征表示。深度学习的概念由Hinton等人于2006年提出。基于深度置信网络(DBN)提出非监督贪心逐层训练算法，为解决深层结构相关的优化难题带来希望，随后提出多层自动编码器深层结构。此外Lecun等人提出的卷积神经网络是第一个真正多层结构学习算法，它利用空间相对关系减少参数数目以提高训练性能。深度学习是机器学习中一种基于对数据进行表征学习的方法。观测值（例如一幅图像）可以使用多种方式来表示，如每个像素强度值的向量，或者更抽象地表示成一系列边、特定形状的区域等。而使用某些特定的表示方法更容易从实例中学习任务（例如，人脸识别或面部表情识别）。深度学习的好处是用非监督式或半监督式的特征学习和分层特征提取高效算法来替代手工获取特征。深度学习是机器学习研究中的一个新的领域，其动机在于建立、模拟人脑进行分析学习的神经网络，它模仿人脑的机制来解释数据，例如图像，声音和文本。同机器学习方法一样，深度机器学习方法也有监督学习与无监督学习之分．不同的学习框架下建立的学习模型很是不同．例如，卷积神经网络（Convolutional neural networks，简称CNNs）就是一种深度的监督学习下的机器学习模型，而深度置信网（Deep Belief Nets，简称DBNs）就是一种无监督学习下的机器学习模型。&quot;,&quot;type&quot;:&quot;topic&quot;,&quot;excerpt&quot;:&quot;深度学习的概念源于人工神经网络的研究。含多隐层的多层感知器就是一种深度学习结构。深度学习通过组合低层特征形成更加抽象的高层表示属性类别或特征，以发现数据的分布式特征表示。深度学习的概念由Hinton等人于2006年提出。基于深度置信网络(DBN)提出非监督贪心逐层训练算法，为解决深层结构相关的优化难题带来希望，随后提出多层自动编码器深层结构。此外Lecun等人提出的卷积神经网络是第一个真正多层结构学习算法，它利用空…&quot;,&quot;id&quot;:&quot;19813032&quot;}],&quot;excerpt&quot;:&quot;&lt;img src=\&quot;https://pic1.zhimg.com/v2-7c40bd49051d84f2138c3ff5188eae38_200x112.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; data-watermark=\&quot;watermark\&quot; data-original-src=\&quot;v2-7c40bd49051d84f2138c3ff5188eae38\&quot; data-watermark-src=\&quot;v2-6e31fc7d7b4cdf74ee95a4b41eaaa698\&quot; data-private-watermark-src=\&quot;\&quot; class=\&quot;origin_image inline-img zh-lightbox-thumb\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-7c40bd49051d84f2138c3ff5188eae38_r.jpg\&quot;&gt;&lt;b&gt;编者按：&lt;/b&gt;子曰：“举一隅不以三隅反，则不复也”。人类从少量样本中去思考，还能用这个做什么；而机器则是见到了上亿的数据，却希望下一个与之前的相似。在机器学习领域中，随着更多应用场景的涌现，我们越来越面临着样本数量不足的问题。因此，如何通过举一…&quot;,&quot;adminClosedComment&quot;:false,&quot;canTip&quot;:false,&quot;excerptTitle&quot;:&quot;&quot;,&quot;contributions&quot;:[{&quot;column&quot;:{&quot;acceptSubmission&quot;:true,&quot;description&quot;:&quot;推送深度学习的最新消息，包括最新技术进展，使用以及活动，由中科视拓（SeetaTech）运营。\n\n中科视拓目前正在招聘： 人脸识别算法研究员，深度学习算法工程师，GPU研发工程师， C++研发工程师，Python研发工程师，嵌入式视觉研发工程师，PR经理，商务经理。（PS：深度学习算法工程师岗位、Python研发工程师岗位、嵌入式视觉开发工程师岗位和运营岗位同时接收实习生投递）有兴趣可以发邮件至：hr@seetatech.com，想了解更多可以访问，www.seetatech.com&quot;,&quot;author&quot;:{&quot;avatarUrlTemplate&quot;:&quot;https://pic4.zhimg.com/7f2f1abb13d957b40dd21dff1d13c8ad_{size}.jpg&quot;,&quot;type&quot;:&quot;people&quot;,&quot;name&quot;:&quot;果果是枚开心果&quot;,&quot;url&quot;:&quot;http://www.zhihu.com/api/v4/people/1f63ab4f38d6b404c2b1816414e0ad30&quot;,&quot;gender&quot;:0,&quot;userType&quot;:&quot;people&quot;,&quot;urlToken&quot;:&quot;guo-dan-qing&quot;,&quot;isAdvertiser&quot;:false,&quot;avatarUrl&quot;:&quot;https://pic4.zhimg.com/7f2f1abb13d957b40dd21dff1d13c8ad_is.jpg&quot;,&quot;isOrg&quot;:false,&quot;headline&quot;:&quot;面向未来编程&quot;,&quot;badge&quot;:[],&quot;id&quot;:&quot;1f63ab4f38d6b404c2b1816414e0ad30&quot;},&quot;url&quot;:&quot;http://www.zhihu.com/api/v4/columns/dlclass&quot;,&quot;commentPermission&quot;:&quot;all&quot;,&quot;title&quot;:&quot;深度学习大讲堂&quot;,&quot;updated&quot;:1489297111,&quot;imageUrl&quot;:&quot;https://pic3.zhimg.com/d465dd7f33dc53988278b39b91b59634_l.jpg&quot;,&quot;isFollowing&quot;:false,&quot;type&quot;:&quot;column&quot;,&quot;id&quot;:&quot;dlclass&quot;},&quot;state&quot;:&quot;accepted&quot;,&quot;id&quot;:1536640}],&quot;id&quot;:38246454,&quot;voteupCount&quot;:41,&quot;upvotedFollowees&quot;:[],&quot;canComment&quot;:{&quot;status&quot;:true,&quot;reason&quot;:&quot;&quot;},&quot;author&quot;:{&quot;avatarUrlTemplate&quot;:&quot;https://pic4.zhimg.com/f500f834bcb69dbd2c040be1ec45fc23_{size}.jpg&quot;,&quot;type&quot;:&quot;people&quot;,&quot;name&quot;:&quot;程程&quot;,&quot;url&quot;:&quot;http://www.zhihu.com/api/v4/people/e88b0df4a852df460635007121f2bfe3&quot;,&quot;gender&quot;:0,&quot;userType&quot;:&quot;people&quot;,&quot;urlToken&quot;:&quot;cheng-cheng-65-1-30&quot;,&quot;isAdvertiser&quot;:false,&quot;avatarUrl&quot;:&quot;https://pic4.zhimg.com/f500f834bcb69dbd2c040be1ec45fc23_is.jpg&quot;,&quot;isFollowing&quot;:false,&quot;isOrg&quot;:false,&quot;headline&quot;:&quot;来自莫屯的小胖纸.&quot;,&quot;badge&quot;:[],&quot;id&quot;:&quot;e88b0df4a852df460635007121f2bfe3&quot;},&quot;url&quot;:&quot;http://zhuanlan.zhihu.com/p/38246454&quot;,&quot;commentPermission&quot;:&quot;all&quot;,&quot;created&quot;:1529400270,&quot;paging&quot;:{&quot;prev&quot;:{&quot;id&quot;:38246100,&quot;title&quot;:&quot;TensorFlow: 薛定谔的管道&quot;}},&quot;annotationAction&quot;:[],&quot;content&quot;:&quot;&lt;p&gt;&lt;b&gt;编者按：&lt;/b&gt;子曰：“举一隅不以三隅反，则不复也”。&lt;/p&gt;&lt;p&gt;人类从少量样本中去思考，还能用这个做什么；而机器则是见到了上亿的数据，却希望下一个与之前的相似。&lt;/p&gt;&lt;p&gt;在机器学习领域中，随着更多应用场景的涌现，我们越来越面临着样本数量不足的问题。因此，如何通过举一反三的方式进行小样本学习，成为了一个重要的研究方向。&lt;/p&gt;&lt;p&gt;本文中，复旦大学的付彦伟教授，将介绍过去一年中小样本学习领域的研究进展。&lt;/p&gt;&lt;p&gt;文末，大讲堂提供文中提到参考文献的下载链接。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_r.jpg\&quot; data-actualsrc=\&quot;https://pic2.zhimg.com/v2-6e31fc7d7b4cdf74ee95a4b41eaaa698_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_r.jpg\&quot; data-actualsrc=\&quot;https://pic4.zhimg.com/v2-75fa90dd0ef72791015407fc449b86df_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;本次报告主要回顾one-shot learning，也可以称为few-shot learning或low-shot learning领域最近的进展。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_r.jpg\&quot; data-actualsrc=\&quot;https://pic1.zhimg.com/v2-58bc7ba91bd48ddf30cf1f6ef02c7b47_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_r.jpg\&quot; data-actualsrc=\&quot;https://pic1.zhimg.com/v2-e07da242e5bf0baec0f9a29f45a8de77_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;首先，one-shot learning产生的动机大家都比较了解。现在在互联网，我们主要用large-scale方法处理数据，但真实情况下，大部分类别我们没有数据积累，large-scale方法不完全适用。所以我们希望在学习了一定类别的大量数据后，对于新的类别，我们只需要少量的样本就能快速学习。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_r.jpg\&quot; data-actualsrc=\&quot;https://pic3.zhimg.com/v2-ac112fb0325077b4396f5e1fc5056a47_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;存在的问题一方面是知识缺失，另一方面是需要大量的训练样本。第一点在本文中不做讨论。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_r.jpg\&quot; data-actualsrc=\&quot;https://pic2.zhimg.com/v2-dc4325ec183630220e17f5a2470e7527_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;对于第二点，目前考虑的解决方法主要有两个：&lt;/p&gt;&lt;p&gt;第一个是人能够识别一个从没有见过的物体，也就是zero-shot learning；&lt;/p&gt;&lt;p&gt;第二个是从已有任务中学习知识，将其应用到未来模型训练中，可以认为是一个迁移学习的问题。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_r.jpg\&quot; data-actualsrc=\&quot;https://pic4.zhimg.com/v2-7ee1cfdf011b9d9243f174a28863da2e_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;那么我们如何定义one-shot learning呢？ 它的目的是从一个或几个图像样本中学习类别信息。但我们这里的one-shot learning并不限于一般图像，也可以在文本，医疗图像等特殊图像，或者物理化学中的扫描图像上进行应用。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_r.jpg\&quot; data-actualsrc=\&quot;https://pic4.zhimg.com/v2-9c6d052c8d60f3f71e73031bac57019a_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_r.jpg\&quot; data-actualsrc=\&quot;https://pic3.zhimg.com/v2-1926a256b406437a9de726cbe7676406_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;One-shot learning的研究主要分为如下几类：&lt;/p&gt;&lt;p&gt;第一类方法是直接基于有监督学习的方法，这是指没有其他的数据源，不将其作为一个迁移学习的问题看待，只利用这些小样本，在现有信息上训练模型，然后做分类；&lt;/p&gt;&lt;p&gt;第二个是基于迁移学习的方法，是指有其他数据源时，利用这些辅助数据集去做迁移学习。这是我今年一篇综述里提到的模型分类。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_r.jpg\&quot; data-actualsrc=\&quot;https://pic1.zhimg.com/v2-c09479d2e39369e5282138f761cf8bf2_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;对于第一类直接进行有监督学习的方法，可以做基于实例的学习，比如KNN，以及非参数方法。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_r.jpg\&quot; data-actualsrc=\&quot;https://pic3.zhimg.com/v2-44931888cba2b9e67d5eb582c8934f90_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;而基于迁移学习的one-shot learning，首先是基于属性的学习，比如我们最早在做zero-shot learning的时候，会顺便做one-shot learning，把特征投影到一个属性空间，然后在这个属性空间中既可以做one-shot learning，又可以做zero-shot learning，但是每个类别都需要属性标注，也就是需要额外的信息。最近的机器学习领域里，所讨论one-shot learning一般不假设我们知道这些额外信息，大体上可以被分为meta-learning，或者metric-learning。 Meta-learning从数据中学习一种泛化的表示，这种泛化的表示可以被直接用于目标数据上，小样本的类别学习过程。Metric-learning从数据源中构建一个空间。但是本质上meta-learning和metric-learning还是有很多相似的地方。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_r.jpg\&quot; data-actualsrc=\&quot;https://pic2.zhimg.com/v2-7ebf642a87c948f8670050238deba555_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;接下来是数据增强，这其实是很重要也很容易被忽视的一点，可以有很多方法来实现：&lt;/p&gt;&lt;p&gt;第一，利用流信息学习one-shot模型，常见的有半监督学习和transductive learning，探讨的是如何用无标签数据去做one-shot learning。&lt;/p&gt;&lt;p&gt;第二，在有预训练模型时，用这些预训练模型进行数据增强。&lt;/p&gt;&lt;p&gt;第三，从相近的类别借用数据，来增强训练数据集。&lt;/p&gt;&lt;p&gt;第四，合成新的有标签训练数据，用一些遥感里的方法，可以合成一些图像，或者3d物体。&lt;/p&gt;&lt;p&gt;第五，用GAN来学习合成模型，比如最近用GAN来做personal ID和人脸相关研究。&lt;/p&gt;&lt;p&gt;第六，属性引导的增强方法。具体大家可以在文章里进行详细了解。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_r.jpg\&quot; data-actualsrc=\&quot;https://pic3.zhimg.com/v2-ccff1defe15225b53441a1e13eadb45e_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;首先基于迁移学习的方法，我们目前的实验结果显示：大部分已经发表的one-shot learning方法在miniImageNet数据集上的结果，比不过resnet-18的结果，这也是很微妙的一点。我们的代码已经放到github上，大家有兴趣可以看一下。（如果我们的实验在什么地方有问题，欢迎大家给我发邮件）&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_r.jpg\&quot; data-actualsrc=\&quot;https://pic3.zhimg.com/v2-d5ab5aaee4455a46035508eada579873_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;下面简单介绍相关文章。首先是Wang Yuxiong的文章Learning to Learn: Model Regression Networks for Easy Small Sample Learning，他们用原数据构建了很多模型库，然后目标数据直接回归这些模型库。具体就是在source class上训练一个regression network。对于大量样本我们可以得到一个比较好的分类器。对于少量样本我们可以得到一个没那么好的分类器。这个regression network的目的就是把没那么好的分类器映射成比较好的分类器。即，把一个分类器的权重映射到另一个分类器。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_r.jpg\&quot; data-actualsrc=\&quot;https://pic4.zhimg.com/v2-f53687e7dfa554c09864cf9c2b21cbc4_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;第二个是Matching Networks for One Shot Learning，这个文章很有意思，从标题中就能读出大概做了什么工作。对于一张图片，我们训练一个matching network来提取它的feature。然后用一个简单的数学公式来判断feature之间的距离。对于新的图片，根据它与已知图片的距离来进行分类。这篇文章精巧地设计了训练的过程，来使得这个过程与测试时的过程一致。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_r.jpg\&quot; data-actualsrc=\&quot;https://pic3.zhimg.com/v2-7effd37946c9a71c4884afacdc55d586_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;第三是MAML，是与模型无关的meta-learning的方法，它主要侧重于深度网络的快速适应。这篇文章的思想就是找到一个网络最好的初始位置，这个初始位置被定义为：经过几个小样本的调整后可以得到最好的表现。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_r.jpg\&quot; data-actualsrc=\&quot;https://pic1.zhimg.com/v2-386dc1a6df41bdab88e35f19adab0ecc_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;第四个是Optimization as a model for few-shot learning，也是meta-learning的方法，将任务组织成一个最优化的问题。这篇文章将梯度下降的过程与LSTM的更新相对比，发现它们非常相似。所以可以用LSTM来学习梯度下降的过程，以此使用LSTM来做梯度下降的工作。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_r.jpg\&quot; data-actualsrc=\&quot;https://pic2.zhimg.com/v2-7f4b41fbfe3f9c3317746c2e2e185f5a_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;第五个是meta networks，也是meta-learning方法。其中利用了少量样本在基础网络中产生的梯度，来快速生成新的参数权重。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_r.jpg\&quot; data-actualsrc=\&quot;https://pic4.zhimg.com/v2-14caaa89bb2aa50c6414fe15a0191765_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;今年NIPS一篇prototypical network，主要是在matching networks的基础上做了一些更改。它们给每一个类一个原型，样本与类的距离就是样本与原型的距离。然后选用欧氏距离替代了matching network的余弦距离。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_r.jpg\&quot; data-actualsrc=\&quot;https://pic1.zhimg.com/v2-3d6a7bc5a91bbc5f48b6fcd30cf24353_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;今年CVPR的Learning to compare: Relation network for few-shot learning。简单来说就是用embedding module来提取feature。然后用relation module来输出两个feature之间的距离。一次来通过距离进行分类选择。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_r.jpg\&quot; data-actualsrc=\&quot;https://pic4.zhimg.com/v2-560823b51d66508cc8d5cbfe04f978bb_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;关于on-shot learning，还有其他参考文献，可在文末的链接中下载。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_r.jpg\&quot; data-actualsrc=\&quot;https://pic2.zhimg.com/v2-00c4b9cce20da6438673e4ab83a3f969_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;下面简单介绍一下数据增强的相关文章。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_r.jpg\&quot; data-actualsrc=\&quot;https://pic4.zhimg.com/v2-d1401c59689830888e1ebf1e7bed1968_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;上图是我们今年的提交到ECCV的一个工作，用左边的encoder-trinet把视觉特征映射到语义空间。因为语义空间上有更丰富的信息，可以在语义空间上做数据扩充（添加高斯噪声和寻找最近邻），再映射回视觉空间来得到更多的扩充样例。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_r.jpg\&quot; data-actualsrc=\&quot;https://pic1.zhimg.com/v2-9cfa074f33e2abfdcc08963df8bd7c32_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;ICCV2017这篇文章根据已有的图像去生成新的图像，然后做low-shot 视觉识别。具体来说，比如说你有三张图片：一张是鸟，一张是鸟站在树枝上，一张是猴子。那么你可以学习一个网络让它生成猴子站在树枝上的图片。本质上是，想把一个类的变化迁移到另一个类上，以此来做数据扩充。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_r.jpg\&quot; data-actualsrc=\&quot;https://pic3.zhimg.com/v2-4527e8e662923b407bae76f395938be2_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;这是去年在CVPR上发表的文章AGA，主要针对3D数据，把图像投影到一个属性空间做数据增强。这是一个few-shot learning方法。具体就是，给定几张距离观测者不同距离的桌子的照片，以及一张凳子的照片，让机器学会如何去生成不同距离的凳子的照片，以此来做数据扩充。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_r.jpg\&quot; data-actualsrc=\&quot;https://pic2.zhimg.com/v2-1b80d29a6a2f77aff62b28be999db2b8_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;最后在 one-shot learning之上，我们还可能遇到一个问题，one-shot learning只关注目标类别上的分类问题，我们希望学习到的模型对源数据类别也适用，否则将带来一个问题，被称为灾难性遗忘。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_r.jpg\&quot; data-actualsrc=\&quot;https://pic3.zhimg.com/v2-3a9d43b8c614c136a4e45212ade5715d_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;发表在PNAS的文章提出EWC 模型来解决这个问题。灾难性遗忘往往源于我们学习任务B的时候更新网络，使得任务A做的没那么好了。EWC提供了一种方法来计算权重对于任务A的重要性，把重要性引入到损失函数中，来避免更改会影响A效果的权重。&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;640\&quot; data-rawheight=\&quot;360\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;640\&quot; data-original=\&quot;https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_r.jpg\&quot; data-actualsrc=\&quot;https://pic2.zhimg.com/v2-cb0dbc9af68a1e508fe6e0b04f20cba6_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;还有learning without forgetting这篇文章，也是侧重于解决这个问题。简单来说就是拿到一个新任务后，我们会更新网络。我们希望在更新网络前后网络没有太大变化，所以我们添加一个loss来限制网络更新前后对于这个新的任务输出的特征不能有太大变化，也就是一个distill loss。&lt;/p&gt;&lt;p&gt;最后，小样本学习还有很多可以研究的东西。目前的成果主要还是基于把已知类别的一些信息迁移到新的类别上。可能未来可以尝试下更多的方向，比如利用无监督的信息或者是半监督的方法。&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;参考文献链接：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=\&quot;https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/1yzoSeuaZvMjKMQlMfD1Yzw\&quot; class=\&quot; external\&quot; target=\&quot;_blank\&quot; rel=\&quot;nofollow noreferrer\&quot;&gt;&lt;span class=\&quot;invisible\&quot;&gt;https://&lt;/span&gt;&lt;span class=\&quot;visible\&quot;&gt;pan.baidu.com/s/1yzoSeu&lt;/span&gt;&lt;span class=\&quot;invisible\&quot;&gt;aZvMjKMQlMfD1Yzw&lt;/span&gt;&lt;span class=\&quot;ellipsis\&quot;&gt;&lt;/span&gt;&lt;/a&gt; &lt;/p&gt;&lt;p&gt;密码: xmap&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;                                            主编：&lt;/b&gt;袁基睿  &lt;b&gt;编辑：&lt;/b&gt;程一&lt;/p&gt;&lt;p&gt;&lt;b&gt;                              整理：&lt;/b&gt;陈梓天、曲英男、杨茹茵、高科、高黎明&lt;/p&gt;&lt;p&gt;                                                          --end--&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;作者简介：&lt;/b&gt;&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;706\&quot; data-rawheight=\&quot;706\&quot; class=\&quot;origin_image zh-lightbox-thumb\&quot; width=\&quot;706\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_r.jpg\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='706'%20height='706'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;706\&quot; data-rawheight=\&quot;706\&quot; class=\&quot;origin_image zh-lightbox-thumb lazy\&quot; width=\&quot;706\&quot; data-original=\&quot;https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_r.jpg\&quot; data-actualsrc=\&quot;https://pic1.zhimg.com/v2-bd9b5ef97d1bce2ab650796ced2aebe9_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;&lt;b&gt;付彦伟，&lt;/b&gt;复旦大学青年副研究员（tenure-track)，2014年获得伦敦大学玛丽皇后学院博士学位，导师: Prof. Tao Xiang and Prof. Shaogang Gong. 2014年12月至2016年7月，在美国Disney Research做博士后研究。入选2017年度上海高校特聘教授 (东方学者) ， 2018年获国家青年千人计划资助。 主要研究领域包括零样本、小样本识别、终生学习算法，人脸识别及行人再识别，及视频情感分析等。有IEEE TPAMI, CVPR等顶级期刊会议论文20篇，15项中国、2项美国专利等。论文被美国多家科技媒体报道，如Science 2.0, PhyORG, Science Newsline Technology, Science 2.0, Communications of ACM, Business Standard, Science Newsline Technology, PhyORG, EurekAlert! AAAS等。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;该文章属于“深度学习大讲堂”原创，如需要转载，请联系&lt;/b&gt;&lt;a href=\&quot;https://www.zhihu.com/people/ruyin_y/activities\&quot; class=\&quot;internal\&quot;&gt;茹茵&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;原文链接：&lt;/b&gt;&lt;a href=\&quot;https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzI1NTE4NTUwOQ%3D%3D%26tempkey%3DOTYxX2dyUUJVQ3N1VmRUZDk2K0lvT09KaFo1X0s4XzFjUDNpQ1BQaGdfRFpSSnRxelkwX2pKdF8yQXF6LTZOQzlPdThWaEpJUzJUZ3otOF9ubXVUR2NyXy04cEY0UW90eUpWcEx6cGhSaHNlYnBULXVNVEd3bm1qdkpwQ2p3bEV5bkJTUjk0VUxObk5uc04zOWFnWlNBb2tEVldBN0xOTnp6YW9iTE9rS2d%252Bfg%253D%253D%26chksm%3D7235bdcc454234da0816cf8dc46f831fb3d6a69300f0ad250f5210e697e941fbbc7f8d2031bd%23rd\&quot; class=\&quot; wrap external\&quot; target=\&quot;_blank\&quot; rel=\&quot;nofollow noreferrer\&quot;&gt;【领域报告】小样本学习年度进展|VALSE2018&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;欢迎大家关注我们的微信公众号，搜索微信名称：深度学习大讲堂&lt;/b&gt;&lt;/p&gt;&lt;figure&gt;&lt;noscript&gt;&lt;img src=\&quot;https://pic4.zhimg.com/v2-5b4f23fa0a7d3338e85c35157311f196_b.jpg\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;346\&quot; data-rawheight=\&quot;67\&quot; class=\&quot;content_image\&quot; width=\&quot;346\&quot;&gt;&lt;/noscript&gt;&lt;img src=\&quot;data:image/svg+xml;utf8,&amp;lt;svg%20xmlns='http://www.w3.org/2000/svg'%20width='346'%20height='67'&amp;gt;&amp;lt;/svg&amp;gt;\&quot; data-caption=\&quot;\&quot; data-size=\&quot;normal\&quot; data-rawwidth=\&quot;346\&quot; data-rawheight=\&quot;67\&quot; class=\&quot;content_image lazy\&quot; width=\&quot;346\&quot; data-actualsrc=\&quot;https://pic4.zhimg.com/v2-5b4f23fa0a7d3338e85c35157311f196_b.jpg\&quot;&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;&quot;,&quot;commentCount&quot;:1,&quot;isTitleImageFullScreen&quot;:false,&quot;title&quot;:&quot;【领域报告】小样本学习年度进展|VALSE2018&quot;,&quot;voting&quot;:0,&quot;type&quot;:&quot;article&quot;,&quot;suggestEdit&quot;:{&quot;status&quot;:false,&quot;url&quot;:&quot;&quot;,&quot;reason&quot;:&quot;&quot;,&quot;tip&quot;:&quot;&quot;,&quot;title&quot;:&quot;&quot;}}},&quot;columns&quot;:{&quot;dlclass&quot;:{&quot;acceptSubmission&quot;:true,&quot;description&quot;:&quot;推送深度学习的最新消息，包括最新技术进展，使用以及活动，由中科视拓（SeetaTech）运营。\n\n中科视拓目前正在招聘： 人脸识别算法研究员，深度学习算法工程师，GPU研发工程师， C++研发工程师，Python研发工程师，嵌入式视觉研发工程师，PR经理，商务经理。（PS：深度学习算法工程师岗位、Python研发工程师岗位、嵌入式视觉开发工程师岗位和运营岗位同时接收实习生投递）有兴趣可以发邮件至：hr@seetatech.com，想了解更多可以访问，www.seetatech.com&quot;,&quot;author&quot;:{&quot;avatarUrlTemplate&quot;:&quot;https://pic4.zhimg.com/7f2f1abb13d957b40dd21dff1d13c8ad_{size}.jpg&quot;,&quot;type&quot;:&quot;people&quot;,&quot;name&quot;:&quot;果果是枚开心果&quot;,&quot;url&quot;:&quot;http://www.zhihu.com/api/v4/people/1f63ab4f38d6b404c2b1816414e0ad30&quot;,&quot;gender&quot;:0,&quot;userType&quot;:&quot;people&quot;,&quot;urlToken&quot;:&quot;guo-dan-qing&quot;,&quot;isAdvertiser&quot;:false,&quot;avatarUrl&quot;:&quot;https://pic4.zhimg.com/7f2f1abb13d957b40dd21dff1d13c8ad_is.jpg&quot;,&quot;isOrg&quot;:false,&quot;headline&quot;:&quot;面向未来编程&quot;,&quot;badge&quot;:[],&quot;id&quot;:&quot;1f63ab4f38d6b404c2b1816414e0ad30&quot;},&quot;url&quot;:&quot;http://www.zhihu.com/api/v4/columns/dlclass&quot;,&quot;commentPermission&quot;:&quot;all&quot;,&quot;title&quot;:&quot;深度学习大讲堂&quot;,&quot;updated&quot;:1489297111,&quot;imageUrl&quot;:&quot;https://pic3.zhimg.com/d465dd7f33dc53988278b39b91b59634_l.jpg&quot;,&quot;isFollowing&quot;:false,&quot;type&quot;:&quot;column&quot;,&quot;id&quot;:&quot;dlclass&quot;}},&quot;topics&quot;:{},&quot;roundtables&quot;:{},&quot;favlists&quot;:{},&quot;comments&quot;:{},&quot;notifications&quot;:{},&quot;ebooks&quot;:{},&quot;activities&quot;:{},&quot;feeds&quot;:{},&quot;pins&quot;:{},&quot;promotions&quot;:{},&quot;drafts&quot;:{}},&quot;currentUser&quot;:&quot;qing-feng-84-70&quot;,&quot;account&quot;:{&quot;lockLevel&quot;:{},&quot;unlockTicketStatus&quot;:false,&quot;unlockTicket&quot;:null,&quot;challenge&quot;:[],&quot;errorStatus&quot;:false,&quot;message&quot;:&quot;&quot;,&quot;isFetching&quot;:false,&quot;accountInfo&quot;:{},&quot;urlToken&quot;:{&quot;loading&quot;:false}},&quot;settings&quot;:{&quot;socialBind&quot;:null,&quot;inboxMsg&quot;:null,&quot;notification&quot;:{},&quot;email&quot;:{},&quot;privacyFlag&quot;:null,&quot;blockedUsers&quot;:{&quot;isFetching&quot;:false,&quot;paging&quot;:{&quot;pageNo&quot;:1,&quot;pageSize&quot;:6},&quot;data&quot;:[]},&quot;blockedFollowees&quot;:{&quot;isFetching&quot;:false,&quot;paging&quot;:{&quot;pageNo&quot;:1,&quot;pageSize&quot;:6},&quot;data&quot;:[]},&quot;ignoredTopics&quot;:{&quot;isFetching&quot;:false,&quot;paging&quot;:{&quot;pageNo&quot;:1,&quot;pageSize&quot;:6},&quot;data&quot;:[]},&quot;restrictedTopics&quot;:null,&quot;laboratory&quot;:{}},&quot;notification&quot;:{},&quot;people&quot;:{&quot;profileStatus&quot;:{},&quot;activitiesByUser&quot;:{},&quot;answersByUser&quot;:{},&quot;answersSortByVotesByUser&quot;:{},&quot;answersIncludedByUser&quot;:{},&quot;votedAnswersByUser&quot;:{},&quot;thankedAnswersByUser&quot;:{},&quot;voteAnswersByUser&quot;:{},&quot;thankAnswersByUser&quot;:{},&quot;topicAnswersByUser&quot;:{},&quot;articlesByUser&quot;:{},&quot;articlesSortByVotesByUser&quot;:{},&quot;articlesIncludedByUser&quot;:{},&quot;pinsByUser&quot;:{},&quot;questionsByUser&quot;:{},&quot;commercialQuestionsByUser&quot;:{},&quot;favlistsByUser&quot;:{},&quot;followingByUser&quot;:{},&quot;followersByUser&quot;:{},&quot;mutualsByUser&quot;:{},&quot;followingColumnsByUser&quot;:{},&quot;followingQuestionsByUser&quot;:{},&quot;followingFavlistsByUser&quot;:{},&quot;followingTopicsByUser&quot;:{},&quot;publicationsByUser&quot;:{},&quot;columnsByUser&quot;:{},&quot;allFavlistsByUser&quot;:{},&quot;brands&quot;:null},&quot;env&quot;:{&quot;experiment&quot;:{&quot;ge3&quot;:&quot;ge3_9&quot;,&quot;ge2&quot;:&quot;ge2_1&quot;,&quot;searchSectionStyle&quot;:&quot;1&quot;,&quot;searchAdvertPosition&quot;:&quot;1&quot;,&quot;growthSearch&quot;:&quot;s2&quot;,&quot;nwebQAGrowth&quot;:&quot;experiment&quot;,&quot;qawebRelatedReadingsContentControl&quot;:&quot;close&quot;,&quot;liveStore&quot;:&quot;ls_a3_b1_c1_f2&quot;,&quot;nwebSearch&quot;:&quot;nweb_search_heifetz&quot;,&quot;searchHybridTabs&quot;:&quot;pin-3#album-7&quot;,&quot;newSignBg&quot;:&quot;new&quot;,&quot;enableVoteDownReasonMenu&quot;:&quot;enable&quot;,&quot;newMobileAppHeader&quot;:&quot;true&quot;,&quot;isOffice&quot;:&quot;false&quot;,&quot;recomAnswerRec&quot;:&quot;answer_base&quot;,&quot;newLiveFeedMediacard&quot;:&quot;new&quot;,&quot;nwebFeedUi&quot;:&quot;expand&quot;,&quot;recommendEbookAc&quot;:&quot;article_base&quot;,&quot;androidPassThroughPush&quot;:&quot;all&quot;,&quot;np&quot;:&quot;1&quot;,&quot;hybridZhmoreVideo&quot;:&quot;yes&quot;,&quot;recommendLiveGuessLike&quot;:&quot;live_guess_gbdt&quot;,&quot;nwebGrowthPeople&quot;:&quot;default&quot;,&quot;nwebSearchSuggest&quot;:&quot;experiment&quot;,&quot;qrcodeLogin&quot;:&quot;qrcode&quot;,&quot;rt&quot;:&quot;y&quot;,&quot;recomLiveAc&quot;:&quot;question_base&quot;,&quot;isShowUnicomFreeEntry&quot;:&quot;unicom_free_entry_off&quot;,&quot;androidSearchTabStyle&quot;:&quot;search_tab_style_b&quot;,&quot;growthBanner&quot;:&quot;default&quot;,&quot;newMobileColumnAppheader&quot;:&quot;new_header&quot;,&quot;recommendLiveDetail&quot;:&quot;live_detail_no_rerank&quot;,&quot;androidDbRecommendAction&quot;:&quot;open&quot;,&quot;searchTab&quot;:&quot;collapse&quot;,&quot;zcmLighting&quot;:&quot;zcm&quot;,&quot;androidDbFeedHashTagStyle&quot;:&quot;button&quot;,&quot;appStoreRateDialog&quot;:&quot;close&quot;,&quot;recommendQuestion&quot;:&quot;rec_question_new2&quot;,&quot;mobileFeedGuide&quot;:&quot;block&quot;,&quot;default&quot;:&quot;None&quot;,&quot;isNewNotiPanel&quot;:&quot;no&quot;,&quot;adR&quot;:&quot;a&quot;,&quot;wechatShareModal&quot;:&quot;wechat_share_modal_show&quot;,&quot;uRe&quot;:&quot;1&quot;,&quot;androidProfilePanel&quot;:&quot;panel_b&quot;},&quot;experimentOrigin&quot;:{&quot;ge3&quot;:&quot;ge3_9&quot;,&quot;ge2&quot;:&quot;ge2_1&quot;,&quot;search_section_style&quot;:&quot;1&quot;,&quot;search_advert_position&quot;:&quot;1&quot;,&quot;growth_search&quot;:&quot;s2&quot;,&quot;nwebQAGrowth&quot;:&quot;experiment&quot;,&quot;qaweb_related_readings_content_control&quot;:&quot;close&quot;,&quot;live_store&quot;:&quot;ls_a3_b1_c1_f2&quot;,&quot;nweb_search&quot;:&quot;nweb_search_heifetz&quot;,&quot;search_hybrid_tabs&quot;:&quot;pin-3#album-7&quot;,&quot;new_sign_bg&quot;:&quot;new&quot;,&quot;enable_vote_down_reason_menu&quot;:&quot;enable&quot;,&quot;new_mobile_app_header&quot;:&quot;true&quot;,&quot;is_office&quot;:&quot;false&quot;,&quot;recom_answer_rec&quot;:&quot;answer_base&quot;,&quot;new_live_feed_mediacard&quot;:&quot;new&quot;,&quot;nweb_feed_ui&quot;:&quot;expand&quot;,&quot;recommend_ebook_ac&quot;:&quot;article_base&quot;,&quot;android_pass_through_push&quot;:&quot;all&quot;,&quot;np&quot;:&quot;1&quot;,&quot;hybrid_zhmore_video&quot;:&quot;yes&quot;,&quot;recommend_live_guess_like&quot;:&quot;live_guess_gbdt&quot;,&quot;nweb_growth_people&quot;:&quot;default&quot;,&quot;nweb_search_suggest&quot;:&quot;experiment&quot;,&quot;qrcode_login&quot;:&quot;qrcode&quot;,&quot;rt&quot;:&quot;y&quot;,&quot;recom_live_ac&quot;:&quot;question_base&quot;,&quot;is_show_unicom_free_entry&quot;:&quot;unicom_free_entry_off&quot;,&quot;android_search_tab_style&quot;:&quot;search_tab_style_b&quot;,&quot;growth_banner&quot;:&quot;default&quot;,&quot;new_mobile_column_appheader&quot;:&quot;new_header&quot;,&quot;recommend_live_detail&quot;:&quot;live_detail_no_rerank&quot;,&quot;android_db_recommend_action&quot;:&quot;open&quot;,&quot;search_tab&quot;:&quot;collapse&quot;,&quot;zcm-lighting&quot;:&quot;zcm&quot;,&quot;android_db_feed_hash_tag_style&quot;:&quot;button&quot;,&quot;app_store_rate_dialog&quot;:&quot;close&quot;,&quot;recommend_question&quot;:&quot;rec_question_new2&quot;,&quot;mobile_feed_guide&quot;:&quot;block&quot;,&quot;default&quot;:&quot;None&quot;,&quot;is_new_noti_panel&quot;:&quot;no&quot;,&quot;ad_r&quot;:&quot;a&quot;,&quot;wechat_share_modal&quot;:&quot;wechat_share_modal_show&quot;,&quot;u_re&quot;:&quot;1&quot;,&quot;android_profile_panel&quot;:&quot;panel_b&quot;},&quot;userAgent&quot;:{&quot;Edge&quot;:false,&quot;Wechat&quot;:false,&quot;Weibo&quot;:false,&quot;QQ&quot;:false,&quot;Mobile&quot;:false,&quot;Android&quot;:false,&quot;iOS&quot;:false,&quot;isAppleDevice&quot;:false,&quot;Zhihu&quot;:false,&quot;ZhihuHybrid&quot;:false,&quot;isBot&quot;:false,&quot;Tablet&quot;:false,&quot;isWebView&quot;:false,&quot;origin&quot;:&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&quot;},&quot;trafficSource&quot;:&quot;production&quot;,&quot;edition&quot;:{&quot;baidu&quot;:false,&quot;yidianzixun&quot;:false,&quot;sogou&quot;:false,&quot;baiduBeijing&quot;:false},&quot;theme&quot;:&quot;light&quot;,&quot;referer&quot;:&quot;https://www.zhihu.com/signin?next=%2Fcollection%2F189001048&quot;,&quot;conf&quot;:{},&quot;ipInfo&quot;:{&quot;cityName&quot;:&quot;Beijing&quot;,&quot;countryName&quot;:&quot;China&quot;,&quot;regionName&quot;:&quot;Beijing&quot;,&quot;countryCode&quot;:&quot;CN&quot;},&quot;logged&quot;:true},&quot;me&quot;:{&quot;organizationProfileStatus&quot;:{},&quot;columnContributions&quot;:[]},&quot;comments&quot;:{&quot;pagination&quot;:{},&quot;collapsed&quot;:{},&quot;reverse&quot;:{},&quot;reviewing&quot;:{},&quot;conversation&quot;:{},&quot;parent&quot;:{}},&quot;pushNotifications&quot;:{&quot;default&quot;:{&quot;isFetching&quot;:false,&quot;isDrained&quot;:false,&quot;ids&quot;:[]},&quot;follow&quot;:{&quot;isFetching&quot;:false,&quot;isDrained&quot;:false,&quot;ids&quot;:[]},&quot;vote_thank&quot;:{&quot;isFetching&quot;:false,&quot;isDrained&quot;:false,&quot;ids&quot;:[]},&quot;currentTab&quot;:&quot;default&quot;,&quot;notificationsCount&quot;:{&quot;default&quot;:6,&quot;follow&quot;:0,&quot;vote_thank&quot;:0}},&quot;messages&quot;:{&quot;data&quot;:{},&quot;currentTab&quot;:&quot;common&quot;,&quot;messageCount&quot;:0},&quot;register&quot;:{&quot;registerValidateSucceeded&quot;:null,&quot;registerValidateErrors&quot;:{},&quot;registerConfirmError&quot;:null,&quot;sendDigitsError&quot;:null,&quot;registerConfirmSucceeded&quot;:null},&quot;login&quot;:{&quot;loginUnregisteredError&quot;:false,&quot;loginBindWechatError&quot;:false,&quot;loginConfirmError&quot;:null,&quot;sendDigitsError&quot;:null,&quot;validateDigitsError&quot;:false,&quot;loginConfirmSucceeded&quot;:null,&quot;qrcodeLoginToken&quot;:&quot;&quot;,&quot;qrcodeLoginScanStatus&quot;:0,&quot;qrcodeLoginError&quot;:null,&quot;qrcodeLoginReturnNewToken&quot;:false},&quot;active&quot;:{&quot;sendDigitsError&quot;:null,&quot;activeConfirmSucceeded&quot;:null,&quot;activeConfirmError&quot;:null},&quot;sms&quot;:{&quot;supportedCountries&quot;:[]},&quot;recommendation&quot;:{},&quot;shareTexts&quot;:{},&quot;articles&quot;:{&quot;voters&quot;:{}},&quot;previewPost&quot;:{},&quot;favlists&quot;:{&quot;relations&quot;:{}},&quot;columns&quot;:{&quot;voters&quot;:{}},&quot;reward&quot;:{&quot;answer&quot;:{},&quot;article&quot;:{},&quot;question&quot;:{}},&quot;video&quot;:{&quot;data&quot;:{}},&quot;switches&quot;:{},&quot;captcha&quot;:{&quot;captchaNeeded&quot;:false,&quot;captchaValidated&quot;:false,&quot;captchaBase64String&quot;:null,&quot;captchaValidationMessage&quot;:null,&quot;loginCaptchaExpires&quot;:false},&quot;topstory&quot;:{&quot;topstorys&quot;:{&quot;isFetching&quot;:false,&quot;isDrained&quot;:false,&quot;afterId&quot;:0,&quot;items&quot;:[],&quot;next&quot;:null},&quot;sidebar&quot;:null,&quot;announcement&quot;:{},&quot;hotList&quot;:[],&quot;guestFeeds&quot;:{&quot;isFetching&quot;:false,&quot;isDrained&quot;:false,&quot;afterId&quot;:0,&quot;items&quot;:[],&quot;next&quot;:null}},&quot;column&quot;:{},&quot;articleContribution&quot;:{&quot;contributeRequests&quot;:[],&quot;deleteContributeIdList&quot;:[],&quot;handledContributeIdList&quot;:[],&quot;recommendedColumns&quot;:[],&quot;pinnedColumns&quot;:[],&quot;sentContributeRequestsIdList&quot;:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,&quot;dlclass&quot;]},&quot;columnContribution&quot;:{&quot;recommendedContributors&quot;:[],&quot;contributionInvitation&quot;:null}}" data-useragent='{"os":{"name":"Windows","version":"7"},"browser":{"name":"Chrome","version":"63.0.3239.132","major":"63"}}' id="data" style="display:none">
+  </div>
+  <script src="https://static.zhihu.com/heifetz/vendor.c1ed8d16a6988c3797dd.js">
+  </script>
+  <script defer="" src="https://static.zhihu.com/heifetz/column.raven.3ba2fcca5345fafcf941.js">
+  </script>
+  <script src="https://static.zhihu.com/heifetz/column.app.9baee722fea334b24471.js">
+  </script>
+  <script>
+  </script>
+ </body>
+</html>

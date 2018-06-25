@@ -1,0 +1,166 @@
+【领域报告】小样本学习年度进展|VALSE2018
+CVPR 2018奖项出炉：两篇最佳论文，何恺明获PAMI 青年研究员奖
+【CVPR2018】实时旋转鲁棒人脸检测算法
+CVPR 2018 高效小网络探密（下）
+深度学习的可解释性研究（二）——不如打开箱子看一看
+Science重磅：无需标注数据，DeepMind新研究让机器“脑补”立体世界！
+金字塔注意力网络：一种利用底层像素与高级特征的语义分割网络
+深度学习对话系统理论篇--HRED+VHRED+Attention With Intention
+深度学习对话系统理论篇--Deep Reinforcement Learning for Dialogue Generation
+TensorFlow实现Attention机制
+DeepMind发两篇新论文，研究将神经网络用于关系推理
+DeepMind 的新型神经网络DNC论文
+【CNN已老，GNN来了】DeepMind、谷歌大脑、MIT等27位作者重磅论文，图网络让深度学习也能因果推理
+SSD-TensorFlow 源码解析
+深度学习入门：用tensorflow实现人脸检测及识别
+[计算机视觉论文速递] 2018-06-13 图像分割专场
+还在为周会发愁？你需要这13篇最新论文
+DNN/LSTM/Text-CNN情感分类实战与分析
+CVPR 2018 | 旷视科技物体检测冠军论文——大型Mini-Batch检测器MegDet
+论文笔记：CliqueNet，然后再YY到玻尔兹曼机
+深度学习新星 | 图卷积神经网络（GCN）有多强大？
+你真的读懂yolo了吗？
+attention模型方法综述
+深度学习中的注意力模型（2017版）
+[计算机视觉论文速递] 2018-06-06
+重磅突破：从36.8到52.52，引入自我注意力模块的SAGAN
+ACL 2018 | 神经语言模型如何利用上下文信息：长距离上下文的词序并不重要
+机器学习能否破解混沌？| PRL论文详解
+6次Kaggle计算机视觉类比赛赛后感
+Deep Robotic Learning(4)Deep Reinforcement Learning for Grasping 深度强化学习+抓取
+论文笔记 - Machine Comprehension by Text-to-Text Neural Question Generation
+推荐 CVPR2018：Decoupled Networks
+《Mimicking Very Efficient Network for Object Detection》 | Paper Reading 2017 CVPR系列
+Temporal Segment Networks: Towards Good Practices for Deep Action Recognition论文笔记
+文本检测之EAST
+预测学习 Predictive Learning：机器学习的前沿，通向智能本质的重要一环
+教程 | 在Keras上实现GAN：构建消除图片模糊的应用
+ConvCRF：一种结合条件随机场与CNN的高效语义分割方法
+从零开始PyTorch项目：YOLO v3目标检测实现（上）
+『深度长文』Tensorflow代码解析（五）
+又快又准确，新目标检测器速度可达每秒200帧
+论文解读：从2D 视频中捕捉3D人体行为
+从DensNet到CliqueNet，解读北大在卷积架构上的探索
+目标检测论文阅读：Cascade R-CNN: Delving into High Quality Object Detection
+【机器视觉】7. 目标跟踪：背景减除、粒子滤波、meanshift
+如何使用深度学习为照片自动生成文本描述？
+从零开始实现YOLO v3（Part1）
+请问超像素(Superpixel)的大致原理以及State-of-the-art？
+“快到没朋友”的目标检测模型YOLO v3问世，之后arXiv垮掉了…
+最适合练手30个的机器学习开源项目
+【干货】史上最全的Tensorflow学习资源汇总
+ICLR 2018 | CMU&谷歌大脑提出新型问答模型QANet：仅使用卷积和自注意力，性能大大优于RNN
+Tensorflow实现YOLO2
+目标检测论文阅读：Relation Networks for Object Detection
+高效CNN推理库、多款AlphaGo实现…你们喜欢的Github项目精选又来了！
+CVPR 2018 | Spotlight论文：解耦神经网络DCNet，性能优于标准CNN
+CVPR 2018 | 旷视科技Face++新方法——通过角点定位和区域分割检测场景文本
+SRGAN With WGAN，让超分辨率算法训练更稳定
+TensorFlow深度学习（二）：识别摄像头看到的内容
+让机器“看山是山”：脑启发的视觉计算|VALSE2018之五
+《小王爱迁移》系列之十五：自动选择源域的迁移学习方法(SSFTL)
+（精品干货）ACL 2018最新论文归类（最全最细）分享
+手把手教你深度学习强大算法进行序列学习(附Python代码)
+GitHub：目标检测最全论文集锦
+图像语义分割(Semantic segmentation) Survey
+机器学习 | 八大步骤解决90%的NLP问题
+通过图灵测试！Google掌舵人说“打电话AI”是一次非凡突破
+VALSE 2018年度进展报告 | 物体检测与识别
+[计算机视觉论文速递] 2018-05-10
+让机器“析毫剖厘”：图像理解与编辑|VALSE2018之三
+[计算机视觉论文速递] 2018-05-08
+CVPR18 Detection文章选介（上）
+《DEEP ACTIVE LEARNING FOR NAMED ENTITY RECOGNITION》阅读笔记
+TransNet: Translation-Based Network Representation Learning for Social
+Relation Extraction 阅读笔记
+Valse2018参会小结——生成对抗网络系列1
+《Depthwise Separable Convolutions for
+Neural Machine Translation》阅读笔记
+CVPR 2018 | 旷视科技Face++提出用于语义分割的判别特征网络DFN
+CVPR 2018 | 密歇根大学&谷歌提出TAL-Net：将Faster R-CNN泛化至视频动作定位中
+DarkNet-YOLOv3 训练自己的数据集 Ubuntu16.04+cuda8.0
+【CVPR2018】GAN相关论文汇总
+detnet详细解读（网络主干分类任务部分）
+[快报]随机矩阵理论在特征提取和神经网络方面的应用
+CVPR 2018 论文解读集锦（持续更新）
+关于序列建模，是时候抛弃RNN和LSTM了
+基于CNN的阅读理解式问答模型：DGCNN
+CVPR 2018 | Spotlight 论文：北京大学计算机研究所提出深度跨媒体知识迁移方法
+用AI让静图变动图：CVPR热文提出动态纹理合成新方法
+Google CVPR 2018论文：CNN量化技术
+深度学习「一键P图」：为原画无缝添加新元素
+【深度学习系列】卷积神经网络详解(二)——自己手写一个卷积神经网络
+CVPR2018 | 海康、UCLA、北理联合提出3D DescriptorNet：可按条件生成3D形状，克服模式崩溃
+【CVPR2018正式公布】行人重识别论文
+如何走近深度学习人脸识别？你需要这篇超长综述 | 附开源代码
+GitHub 上最火，最热门的机器学习和人工智能，数据科学项目
+[计算机视觉论文速递] 2018-04-03
+场景文字检测—CTPN原理与实现
+[计算机视觉论文速递] 2018-03-31
+GAN论文分类总结
+论文|反馈网络
+一周精品论文分享-0325
+风格迁移原理及tensorflow实现-附代码
+目前人脸识别技术的挑战是什么？
+有哪些相见恨晚的 TensorFlow 小技巧？
+推荐-2018年最值得读的12本深度学习相关的书
+CNN入门讲解：什么是残差网络Resnet（视频）
+A-Fast-RCNN: Hard Positive Generation via Adversary for Object Detection
+用Tensorflow让神经网络自动创造音乐
+最具价值的50个机器学习应用[2017年]
+目标检测|SSD原理与实现
+图像描述：基于项的注意力机制
+全面了解卷积神经网络
+顶级机器学习论文的项目实践 | 年度 Top50
+My solutions for `Google TensorFlow Speech Recognition Challenge`
+Mask R-CNN解读：图像识别中的三个重要任务 | Paper Reading第一季第九期
+[干货|实践] TensorBoard可视化
+揭开迷雾，来一顿美味的「Capsule」盛宴 | 附代码实现 + 全新实验
+【计算机视觉】《Light-Head R-CNN: In Defense of Two-Stage Object Detector》
+用CNN分100,000类图像
+Single Shot MultiBox Detector 详解
+基于深度学习的图像目标检测(下)
+Tensorflow小练习（二）：DCGAN-深度卷积生成对抗网络
+图像语义分割入门+FCN/U-Net网络解析
+基于SSD神经网络的实时手部检测器构建（Tensorflow）
+CNN 之 "物体检测" 篇
+基于深度学习的图像目标检测(上)
+目标检测|YOLO原理与实现
+从编程实现角度学习Faster R-CNN（附极简实现）
+纯干货18 - 2016-2017深度学习-最新-必读-经典论文
+从Pix2Code到CycleGAN：2017年深度学习重大研究进展全解读
+图像语义分割经典论文推荐
+深度强化学习的18个关键问题
+如何用100行神经网络代码为黑白图片着色（Keras实现）
+深度学习利器： TensorFlow系统架构及高性能程序设计
+提高驾驶技术：用GAN去除(爱情)动作片中的马赛克和衣服
+CNN预测股票走势基于Tensorflow（思路+程序）
+深度学习实践：使用Tensorflow实现快速风格迁移
+用神经网络“寻找威利”（附Python代码）
+论文分解器：Hinton's capsule 2017
+XGAN解读以及一个深重的教训
+使用RNN预测股票价格系列（一）
+【干货】Deep Learning with Python 终于等到你！
+从SRCNN到EDSR，总结深度学习端到端超分辨率方法发展历程
+Reddit热点 | 想看被打码的羞羞图片怎么办？CNN帮你解决
+怎样用深度学习取悦你的女朋友（附代码和视频链接）
+机器视觉、机器学习及相关从业人员每天必看的站点有哪些？
+实时多人的姿态估计【 CVPR'17 (Oral)】
+Python 实现基于深度强化学习算法实现的一个简单自动驾驶 AI 【PyTorch】
+自己实现黑白图片自动上色AI（一）
+CapsulesNet 的解析及整理
+Chinese-Text-Classification：用卷积神经网络基于 Tensorflow 实现的中文文本分类器
+用深度学习进行人脸识别
+[读论文]用全卷积Res网络做深度估计
+【博客存档】TensorFlow之深入理解Fast Neural Style
+[读论文]深度融合网络.Deeply-Fused Nets
+一份不可多得的深度学习技巧指南
+梯度上升可视化卷积神经网络
+Step-by-step to LSTM: 解析LSTM神经网络设计原理
+从零开始的深度学习魔法书
+全卷积网络 FCN 详解
+深度学习迅猛发展，或可自动生成游戏
+迁移学习实战猫狗大战
+那些深度学习《面试》你可能需要知道的
+独家 | 自然语言处理(NLP)入门学习资源清单
+“信息瓶颈”理论揭示深度学习本质，Hinton说他要看1万遍
